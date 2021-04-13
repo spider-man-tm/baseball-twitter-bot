@@ -20,7 +20,7 @@ SEARCH = [
     '#chibalotte', '#lovefighters', '#RakutenEagles',
     '#阪神タイガース', '#ジャイアンツ', '#広島東洋カープ',
     '#スワローズ', '#中日ドラゴンズ', '#baystars',
-    '#npb',
+    '#NPB',
 ]
 s3 = boto3.resource('s3')
 logger = logging.getLogger(__name__)
