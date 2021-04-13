@@ -13,7 +13,7 @@ ATS = os.environ['ACCESS_TOKEN_SECRET']
 CK = os.environ['CONSUMER_KEY']
 CS = os.environ['CONSUMER_SECRET']
 URL = os.environ['URL']
-BUCKET_NAME = 'baseball-collect-tweets'
+BUCKET_NAME = os.environ['BUCKET_NAME']
 
 SEARCH = [
     '#seibulions', '#Bs2021', '#sbhawks',

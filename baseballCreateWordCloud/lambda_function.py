@@ -17,6 +17,8 @@ CK = os.environ['CONSUMER_KEY']
 CS = os.environ['CONSUMER_SECRET']
 URL_TEXT = os.environ['URL_TEXT']
 URL_MEDIA = os.environ['URL_MEDIA']
+TWEET_BUCKET_NAME = os.environ['TWEET_BUCKET_NAME']
+MASK_BUCKET_NAME = os.environ['MASK_BUCKET_NAME']
 twitter = OAuth1Session(CK, CS, AT, ATS)
 
 now = datetime.now(pytz.timezone('Asia/Tokyo'))
@@ -33,7 +35,7 @@ def get_img_from_s3():
     マスク画像の取得
     """
     s3 = boto3.resource('s3')
-    bucket = s3.Bucket('baseball-mask-data')
+    bucket = s3.Bucket(MASK_BUCKET_NAME)
     res = bucket.Object('ground.jpeg').get()
     body = res['Body'].read()
     img = Image.open(BytesIO(body))
@@ -46,9 +48,8 @@ def get_txt_from_s3():
     取得してきたtweetデータの取得
     """
     s3 = boto3.client('s3')
-    bucket_name = 'baseball-collect-tweets'
     key = now_date + '/today.txt'
-    response = s3.get_object(Bucket=bucket_name, Key=key)
+    response = s3.get_object(Bucket=TWEET_BUCKET_NAME, Key=key)
     txt = response['Body'].read().decode('utf-8')
     return txt
 
@@ -58,7 +59,7 @@ def get_font_from_s3():
     日本語の文字化け対策のためfontデータを取得
     """
     s3 = boto3.resource('s3')
-    s3_bucket = s3.Bucket('baseball-mask-data')
+    s3_bucket = s3.Bucket(MASK_BUCKET_NAME)
     font_file_path = '/tmp/font.ttc'
     s3_bucket.download_file('font.ttc', font_file_path)
     return font_file_path
@@ -77,8 +78,8 @@ def create_word_cloud():
         color_func=image_color,
         prefer_horizontal=1.0,
         max_words=1000,
-        max_font_size=42,
-        min_font_size=6,
+        max_font_size=38,
+        min_font_size=4,
         font_step=1,
         font_path=font,
         background_color='#d3f7ff',
@@ -95,7 +96,7 @@ def img_to_s3(img):
     S3バケットにワードクラウドを保存
     """
     s3 = boto3.client('s3')
-    bucket = 'baseball-collect-tweets'
+    bucket = TWEET_BUCKET_NAME
     key = f'{now_date}/word_cloud.png'
     tmp = u'/tmp/' + os.path.basename(key)
     img.save(tmp, 'PNG')

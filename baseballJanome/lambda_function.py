@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import json
 import boto3
 import pytz
@@ -8,7 +9,7 @@ from janome.analyzer import Analyzer
 from janome.tokenfilter import CompoundNounFilter
 
 
-BUCKET_NAME = 'baseball-collect-tweets'
+BUCKET_NAME = os.environ['BUCKET_NAME']
 s3 = boto3.resource('s3')
 s3_bucket = s3.Bucket(BUCKET_NAME)
 
