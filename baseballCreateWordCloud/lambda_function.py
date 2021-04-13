@@ -119,9 +119,11 @@ def twitter_post(img):
 
     media_id = json.loads(req_media.text)['media_id']
 
-    message = '''のプロ野球関連ツイートまとめです。
-                平日は17:00頃~23:00の時間帯、土日は12:00頃~18:00の時間帯に
-                ツイートされた情報を元に作成しています。'''
+    message = '''のプロ野球関連ツイートまとめです。\n
+                #seibulions #Bs2021 #sbhawks #chibalotte
+                #lovefighters #RakutenEagles #阪神タイガース
+                #ジャイアンツ #広島東洋カープ #スワローズ
+                #中日ドラゴンズ #baystars #NPB'''
 
     params = {
         'status': f'{now_date}{message}',
