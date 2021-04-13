@@ -3,8 +3,12 @@ Word Cloud 自動生成 Twitter-Bot
 
 <br />
 
+![fig1](./readme-image/image.png)
+
+<br />
+
 # 構成図
-![fig1](./readme-image/architect.png)
+![fig2](./readme-image/architect.png)
 
 <br />
 

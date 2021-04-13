@@ -13,7 +13,7 @@ ATS = os.environ['ACCESS_TOKEN_SECRET']
 CK = os.environ['CONSUMER_KEY']
 CS = os.environ['CONSUMER_SECRET']
 URL = os.environ['URL']
-BUCKET_NAME = 'baseball-collect-tweets'
+BUCKET_NAME = os.environ['BUCKET_NAME']
 
 SEARCH = [
     '#seibulions', '#Bs2021', '#sbhawks',
@@ -34,15 +34,27 @@ def remove_emoji(src_str):
     return ''.join(c for c in src_str if c not in emoji.UNICODE_EMOJI)
 
 
-def collect_tweets(word):
+def collect_tweets(word, league):
     twitter = OAuth1Session(CK, CS, AT, ATS)
-    params = {
-        'q': word,
-        'count': 100,
-        'result_type': 'recent',
-        # 'exclude': 'retweets',
-        'lang': 'ja'
-    }
+    # セリーグの場合
+    if league:
+        params = {
+            'q': word,
+            'count': 90,
+            'result_type': 'recent',
+            # 'exclude': 'retweets',
+            'lang': 'ja'
+        }
+    # パリーグの場合
+    else:
+        params = {
+            'q': word,
+            'count': 100,
+            'result_type': 'recent',
+            # 'exclude': 'retweets',
+            'lang': 'ja'
+        }
+
     res = twitter.get(URL, params=params)
 
     if res.status_code == 200:
@@ -70,9 +82,13 @@ def collect_tweets(word):
 
 
 def lambda_handler(event, context):
-    for word in SEARCH:
-        collect_tweets(word)
-
+    for i in range(len(SEARCH)):
+        if i < 6:
+            # パリーグのチームに関するツイートは100個集める
+            collect_tweets(SEARCH[i], league=False)
+        else:
+            # セリーグのチームに関するツイートは90個集める
+            collect_tweets(SEARCH[i], league=True)
     return {
         'statusCode': 200,
         'body': json.dumps('Done.')
