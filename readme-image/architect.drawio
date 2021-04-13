@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="3-KSoQa4nNObV2YMimPg" name="Page-1">
-        <mxGraphModel dx="1038" dy="735" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1038" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -109,11 +109,11 @@
                         <mxPoint x="690" y="260" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="31" value="形態素解析の結果と、&lt;br&gt;事前にS3に保存したマスク画像を&lt;br&gt;元にWordCloudを生成&lt;br&gt;作成したイメージをS3に保存し&lt;br&gt;Twitterにもポストする" style="shape=flexArrow;endArrow=classic;html=1;exitX=1.047;exitY=0.994;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="27" target="7" edge="1">
-                    <mxGeometry x="0.7494" y="148" width="50" height="50" relative="1" as="geometry">
+                <mxCell id="31" value="形態素解析の結果、事前にS3に保存した&lt;br&gt;マスク画像、及びTTCフォントファイルを&lt;br&gt;元にWordCloudを生成する。生成された画像&lt;br&gt;をS3に保存 &amp;amp; Twitterにポストする" style="shape=flexArrow;endArrow=classic;html=1;exitX=1.047;exitY=0.994;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="27" target="7" edge="1">
+                    <mxGeometry x="0.8345" y="167" width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="590" y="191" as="sourcePoint"/>
                         <mxPoint x="640" y="141" as="targetPoint"/>
-                        <mxPoint y="1" as="offset"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="33" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#D05C17;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.container_registry_image;" parent="1" vertex="1">
