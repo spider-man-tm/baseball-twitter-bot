@@ -78,7 +78,7 @@ def create_word_cloud():
         color_func=image_color,
         prefer_horizontal=1.0,
         max_words=1000,
-        max_font_size=38,
+        max_font_size=36,
         min_font_size=4,
         font_step=1,
         font_path=font,
