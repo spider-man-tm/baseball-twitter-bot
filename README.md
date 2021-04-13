@@ -4,7 +4,7 @@ Word Cloud 自動生成 Twitter-Bot
 <br />
 
 # 構成図
-![fig1](./architect.png)
+![fig1](./readme-image/architect.png)
 
 <br />
 
