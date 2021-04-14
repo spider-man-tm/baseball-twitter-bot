@@ -27,9 +27,9 @@ STOP_WORDS = {
     'ため', 'やつ', 'さん', 'RT', 'ない', 'ほど', 'なん', '悪い', '自分',
     'の', 'そこ', 'どっち', '方', '僕', 'あと', '今日', '昨日', 'わけ', 'うち',
     '明日', '試合', 'プロ野球ニュース', 'ここ', 'プロ野球', '野球', 'はず',
-    'seibulions', 'Seibulions', 'sbhawks',
+    'seibulions', 'Seibulions', 'sbhawks', 'みんな', 'みなさま',
     'RakutenEagles', 'Rakuteneagles', 'rakuteneagles', 'Rakuten_Eagles',
-    'hanshin', 'BayStars', 'Bs2021', 'bs2021',
+    'hanshin', 'BayStars', 'Bs2021', 'bs2021', 'bs_ponta',
     'chibalotte', 'lovefighters', 'giants', 'tigers', 'carp',
     'swallows', 'Swallows', 'dragons', 'baystars', 'バファローズポンタ',
     'プロ野球ニュース', 'NPB', 'もの', '東海ラジオ', 'radiko', 'DAZN',
@@ -40,6 +40,7 @@ STOP_WORDS = {
     '阪神', 'Tigers', '巨人', 'ジャイアンツ', 'オリックス', 'バファローズ', 'ソフトバンク', 'ホークス',
     '西武', 'ライオンズ', '楽天', 'イーグルス', '楽天イーグルス', 'ロッテ', 'マリーンズ', '日本ハム', 'ファイターズ',
     '最後', '早い', '無い', 'とき', 'まま', 'ええ', 'ツイート', 'リツイート', 'フォロー', '引用リツイート',
+    'リーグ順位表', '本日', 'https co',
 }
 
 
