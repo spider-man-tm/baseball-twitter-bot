@@ -20,7 +20,6 @@ SEARCH = [
     '#chibalotte', '#lovefighters', '#RakutenEagles',
     '#阪神タイガース', '#ジャイアンツ', '#広島東洋カープ',
     '#スワローズ', '#中日ドラゴンズ', '#baystars',
-    '#NPB',
 ]
 s3 = boto3.resource('s3')
 logger = logging.getLogger(__name__)
@@ -34,26 +33,15 @@ def remove_emoji(src_str):
     return ''.join(c for c in src_str if c not in emoji.UNICODE_EMOJI)
 
 
-def collect_tweets(word, league):
+def collect_tweets(word):
     twitter = OAuth1Session(CK, CS, AT, ATS)
-    # セリーグの場合
-    if league:
-        params = {
-            'q': word,
-            'count': 90,
-            'result_type': 'recent',
-            # 'exclude': 'retweets',
-            'lang': 'ja'
-        }
-    # パリーグの場合
-    else:
-        params = {
-            'q': word,
-            'count': 100,
-            'result_type': 'recent',
-            # 'exclude': 'retweets',
-            'lang': 'ja'
-        }
+    params = {
+        'q': word,
+        'count': 100,
+        'result_type': 'recent',
+        # 'exclude': 'retweets',
+        'lang': 'ja'
+    }
 
     res = twitter.get(URL, params=params)
 
@@ -82,13 +70,8 @@ def collect_tweets(word, league):
 
 
 def lambda_handler(event, context):
-    for i in range(len(SEARCH)):
-        if i < 6:
-            # パリーグのチームに関するツイートは100個集める
-            collect_tweets(SEARCH[i], league=False)
-        else:
-            # セリーグのチームに関するツイートは90個集める
-            collect_tweets(SEARCH[i], league=True)
+    for word in SEARCH:
+        collect_tweets(SEARCH)
     return {
         'statusCode': 200,
         'body': json.dumps('Done.')
