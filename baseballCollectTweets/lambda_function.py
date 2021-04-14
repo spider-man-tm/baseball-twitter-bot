@@ -39,7 +39,7 @@ def collect_tweets(word):
         'q': word,
         'count': 100,
         'result_type': 'recent',
-        # 'exclude': 'retweets',
+        'exclude': 'retweets',
         'lang': 'ja'
     }
 
