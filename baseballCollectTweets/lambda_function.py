@@ -71,7 +71,7 @@ def collect_tweets(word):
 
 def lambda_handler(event, context):
     for word in SEARCH:
-        collect_tweets(SEARCH)
+        collect_tweets(word)
     return {
         'statusCode': 200,
         'body': json.dumps('Done.')
