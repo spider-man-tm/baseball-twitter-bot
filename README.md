@@ -80,6 +80,6 @@ $ sh upload-function.sh
 
 | 関数名 | cron | 内容 |
 | -- | -- | -- |
-| baseballCollectTweets | cron(0/20 9-14 ? * MON-FRI *) | 平日18-23まで20分おきに実行 |
-| baseballJanome | cron(3 14 ? * MON-FRI *) | 平日23:03に実行 |
-| baseballCreateWordCloud | cron(6 14 ? * MON-FRI *) | 平日23:06に実行 |
+| baseballCollectTweets | cron(0/20 9-13 ? * MON-FRI *) | 平日18-22まで20分おきに実行 |
+| baseballJanome | cron(3 13 ? * MON-FRI *) | 平日22:03に実行 |
+| baseballCreateWordCloud | cron(6 13 ? * MON-FRI *) | 平日22:06に実行 |

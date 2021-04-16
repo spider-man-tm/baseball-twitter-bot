@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="3-KSoQa4nNObV2YMimPg" name="Page-1">
-        <mxGraphModel dx="1038" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="989" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -42,7 +42,7 @@
                         <mxPoint x="-11.02" y="19.52" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" value="平日18~23 /20分おき&lt;br&gt;土日13~18 /20分おき&lt;br&gt;イベントトリガー" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="10" target="6" edge="1">
+                <mxCell id="14" value="平日18~22/20分おき&lt;br&gt;土日13~18 /20分おき&lt;br&gt;イベントトリガー" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="10" target="6" edge="1">
                     <mxGeometry x="-1" y="-110" width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="390" y="360" as="sourcePoint"/>
                         <mxPoint x="440" y="310" as="targetPoint"/>
@@ -69,14 +69,14 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" value="平日23:03&lt;br&gt;土日18:03&lt;br&gt;イベントトリガー" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+                <mxCell id="23" value="平日22:03&lt;br&gt;土日18:03&lt;br&gt;イベントトリガー" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry x="-1" y="-108" width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="414" y="397" as="sourcePoint"/>
                         <mxPoint x="414" y="348" as="targetPoint"/>
                         <mxPoint x="-108" y="108" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="24" value="平日23:06&lt;br&gt;土日18:06&lt;br&gt;イベントトリガー" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+                <mxCell id="24" value="平日22:06&lt;br&gt;土日18:06&lt;br&gt;イベントトリガー" style="shape=flexArrow;endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry x="-1" y="-108" width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="579" y="397" as="sourcePoint"/>
                         <mxPoint x="579" y="348" as="targetPoint"/>
