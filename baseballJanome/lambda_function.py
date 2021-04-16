@@ -22,29 +22,6 @@ logger.addHandler(handler)
 now = datetime.now(pytz.timezone('Asia/Tokyo'))
 now_date = now.strftime('%Y-%m-%d')
 
-STOP_WORDS = {
-    'こと', 'よう', 'そう', 'これ', 'それ', 'みたい', '良い', 'もん', 'いい',
-    'ため', 'やつ', 'さん', 'RT', 'ない', 'ほど', 'なん', '悪い', '自分',
-    'の', 'そこ', 'どっち', '方', '僕', 'あと', '今日', '昨日', 'わけ', 'うち',
-    '明日', '試合', 'プロ野球ニュース', 'ここ', 'プロ野球', '野球', 'はず',
-    'seibulions', 'Seibulions', 'sbhawks', 'みんな', 'みなさま',
-    'RakutenEagles', 'Rakuteneagles', 'rakuteneagles', 'Rakuten_Eagles',
-    'hanshin', 'BayStars', 'Bs2021', 'bs2021', 'bs_ponta',
-    'chibalotte', 'lovefighters', 'giants', 'tigers', 'carp',
-    'swallows', 'Swallows', 'dragons', 'baystars', 'バファローズポンタ',
-    'プロ野球ニュース', 'NPB', 'もの', '東海ラジオ', 'radiko', 'DAZN',
-    'リーグ公式戦', 'Crap_Jikkyo', 'プロ野球選手', 'ところ', 'ダメ', '相手',
-    'セリーグ', 'パリーグ', '投手', '野手', '今年', '去年', 'ドラステ', 'ドラゴンズステーション',
-    '中日', '中日ドラゴンズ', 'スワローズ', 'ヤクルト', 'カープ', '広島東洋カープ', '広島カープ',
-    '阪神タイガース', 'タイガース', 'DeNA', 'ベイスターズ', 'kanpuri_hiro', 'nikkan_mashiba',
-    '阪神', 'Tigers', '巨人', 'ジャイアンツ', 'オリックス', 'バファローズ',
-    'ソフトバンク', 'ホークス', '埼玉西武ライオンズ', 'こちら', 'LCOLLECTION',
-    '西武', 'ライオンズ', '楽天', 'イーグルス', '楽天イーグルス', 'ロッテ', 'マリーンズ', '日本ハム', 'ファイターズ',
-    '最後', '早い', '無い', 'とき', 'まま', 'ええ', 'ツイート', 'リツイート', 'フォロー', '引用リツイート',
-    'リーグ順位表', '本日', 'https co', '選手', '欲しい', 'PL', 'CL', 'リーグ試合結果',
-    '公式戦', '予告先発',
-}
-
 
 def str_replace(t):
     words = ['@', '#', ':', '\"', ' ', '　', '!', '！', '?', '？']
@@ -65,7 +42,7 @@ def extraction(texts):
                 t = t.base_form   # 基本形
                 # t = t.surface   # 表層形
                 t = str_replace(t)
-                if t not in STOP_WORDS and t[:4] != 'http':
+                if t[:4] != 'http':
                     words.append(t)
     return ' '.join(words)
 
