@@ -108,7 +108,7 @@ def create_word_cloud():
         font_path=font,
         stopwords=STOP_WORDS,
         background_color='#d3f7ff',
-        min_word_length=2,
+        min_word_length=1,
         repeat=True,
     ).generate(text)
     wc = wc.to_array()
