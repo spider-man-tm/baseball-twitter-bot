@@ -38,7 +38,7 @@ def get_img_from_s3():
     """
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(MASK_BUCKET_NAME)
-    res = bucket.Object('ground.jpeg').get()
+    res = bucket.Object('ground.png').get()
     body = res['Body'].read()
     img = Image.open(BytesIO(body))
     img = np.asarray(img)
