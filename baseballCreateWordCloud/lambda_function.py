@@ -38,7 +38,7 @@ def get_img_from_s3():
     """
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(MASK_BUCKET_NAME)
-    res = bucket.Object('ground.png').get()
+    res = bucket.Object('ground.jpeg').get()
     body = res['Body'].read()
     img = Image.open(BytesIO(body))
     img = np.asarray(img)
@@ -81,7 +81,7 @@ def create_word_cloud():
         prefer_horizontal=1.0,
         max_words=1000,
         max_font_size=36,
-        min_font_size=4,
+        min_font_size=5,
         font_step=1,
         font_path=font,
         stopwords=STOP_WORDS,
