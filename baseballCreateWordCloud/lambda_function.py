@@ -6,7 +6,7 @@ import logging
 import numpy as np
 from io import BytesIO
 from PIL import Image
-from datetime import datetime
+from datetime import datetime, timedelta
 from requests_oauthlib import OAuth1Session
 from wordcloud import WordCloud, ImageColorGenerator
 import stop_word
@@ -23,7 +23,7 @@ MASK_BUCKET_NAME = os.environ['MASK_BUCKET_NAME']
 STOP_WORDS = stop_word.STOP_WORDS
 twitter = OAuth1Session(CK, CS, AT, ATS)
 
-now = datetime.now(pytz.timezone('Asia/Tokyo'))
+now = datetime.now(pytz.timezone('Asia/Tokyo')) - timedelta(hours=12)
 now_date = now.strftime('%Y-%m-%d')
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
@@ -32,13 +32,13 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
 
-def get_img_from_s3():
+def get_img_from_s3(key):
     """
-    マスク画像の取得
+    S3から画像を取得
     """
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(MASK_BUCKET_NAME)
-    res = bucket.Object('ground.jpeg').get()
+    res = bucket.Object(key).get()
     body = res['Body'].read()
     img = Image.open(BytesIO(body))
     img = np.asarray(img)
@@ -71,7 +71,8 @@ def create_word_cloud():
     """
     word cloudの生成
     """
-    mask = get_img_from_s3()
+    mask = get_img_from_s3('ground-new.jpg')
+    back_image = get_img_from_s3('league.jpg')
     text = get_txt_from_s3()
     font = get_font_from_s3()
     image_color = ImageColorGenerator(mask)
@@ -85,13 +86,19 @@ def create_word_cloud():
         font_step=1,
         font_path=font,
         stopwords=STOP_WORDS,
-        background_color='#d3f7ff',
+        background_color='#ffffff',
         min_word_length=1,
         repeat=True,
     ).generate(text)
-    wc = wc.to_array()
-    wc = Image.fromarray(wc)
-    return wc
+    wc = wc.to_array().astype(int)
+    wc = np.where(wc < 125, wc * 0.5, wc * 1.2)
+    back_image = back_image.astype(int)
+    img = (wc * 2 + back_image) // 3
+    img = np.where(img > 255, 255, img)
+    img = np.where(img < 0, 0, img)
+    img = img.astype('uint8')
+    img = Image.fromarray(img)
+    return img
 
 
 def img_to_s3(img):
