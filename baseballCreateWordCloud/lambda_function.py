@@ -6,7 +6,7 @@ import logging
 import numpy as np
 from io import BytesIO
 from PIL import Image
-from datetime import datetime, timedelta
+from datetime import datetime
 from requests_oauthlib import OAuth1Session
 from wordcloud import WordCloud, ImageColorGenerator
 import stop_word
@@ -23,7 +23,7 @@ MASK_BUCKET_NAME = os.environ['MASK_BUCKET_NAME']
 STOP_WORDS = stop_word.STOP_WORDS
 twitter = OAuth1Session(CK, CS, AT, ATS)
 
-now = datetime.now(pytz.timezone('Asia/Tokyo')) - timedelta(hours=12)
+now = datetime.now(pytz.timezone('Asia/Tokyo'))
 now_date = now.strftime('%Y-%m-%d')
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()
