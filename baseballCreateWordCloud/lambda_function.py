@@ -3,6 +3,7 @@ import json
 import boto3
 import pytz
 import logging
+import random
 import numpy as np
 from io import BytesIO
 from PIL import Image
@@ -30,6 +31,11 @@ handler = logging.StreamHandler()
 handler.setLevel(logging.DEBUG)
 logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
+
+COLOR_MAPS = [
+    'mask', 'coolwarm', 'brg', 'cool', 'rainbow',
+    'seismic', 'jet', 'copper', 'gist_heat', 'winter',
+]
 
 
 def get_img_from_s3(key):
@@ -67,33 +73,54 @@ def get_font_from_s3():
     return font_file_path
 
 
-def create_word_cloud():
+def create_word_cloud(color_maps):
     """
     word cloudの生成
     """
-    mask = get_img_from_s3('ground-new.jpg')
+    if color_maps == 'mask':
+        mask = get_img_from_s3('ground-new.jpg')
+        image_color = ImageColorGenerator(mask)
     back_image = get_img_from_s3('league.jpg')
     text = get_txt_from_s3()
     font = get_font_from_s3()
-    image_color = ImageColorGenerator(mask)
-    wc = WordCloud(
-        mask=mask,
-        color_func=image_color,
-        prefer_horizontal=1.0,
-        max_words=1000,
-        max_font_size=32,
-        min_font_size=5,
-        font_step=1,
-        font_path=font,
-        stopwords=STOP_WORDS,
-        background_color='#ffffff',
-        min_word_length=1,
-        repeat=True,
-    ).generate(text)
+
+    if color_maps == 'mask':
+        wc = WordCloud(
+            mask=mask,
+            color_func=image_color,
+            width=864,
+            height=540,
+            prefer_horizontal=1.0,
+            max_words=1000,
+            max_font_size=32,
+            min_font_size=5,
+            font_step=1,
+            font_path=font,
+            stopwords=STOP_WORDS,
+            background_color='#ffffff',
+            min_word_length=1,
+            repeat=True,
+        ).generate(text)
+    else:
+        wc = WordCloud(
+            colormap=color_maps,
+            width=864,
+            height=540,
+            prefer_horizontal=1.0,
+            max_words=1000,
+            max_font_size=32,
+            min_font_size=5,
+            font_step=1,
+            font_path=font,
+            stopwords=STOP_WORDS,
+            background_color='#ffffff',
+            min_word_length=1,
+            repeat=True,
+        ).generate(text)
     wc = wc.to_array().astype(int)
     wc = np.where(wc < 125, wc * 0.5, wc * 1.2)
     back_image = back_image.astype(int)
-    img = (wc * 2 + back_image) // 3
+    img = (wc * 5 + back_image * 2) // 7
     img = np.where(img > 255, 255, img)
     img = np.where(img < 0, 0, img)
     img = img.astype('uint8')
@@ -146,10 +173,12 @@ def twitter_post(img):
 
 
 def lambda_handler(event, context):
-    img = create_word_cloud()
+    color_maps = COLOR_MAPS[int(random.random() * 10)]
+    logger.info(f'color_maps: {color_maps}')
+    img = create_word_cloud(color_maps)
     img_to_s3(img)
     message = twitter_post(img)
-    logger.info(message)
+    logger.info(f'message: {message}')
     return {
         'statusCode': 200,
         'body': json.dumps('Done.')
