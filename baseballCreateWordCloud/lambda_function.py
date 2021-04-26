@@ -33,8 +33,8 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
 COLOR_MAPS = [
-    'mask', 'coolwarm', 'brg', 'cool', 'rainbow',
-    'seismic', 'jet', 'copper', 'gist_heat', 'winter',
+    'mask', 'brg', 'gnuplot',
+    'seismic', 'copper', 'gist_heat',
 ]
 
 
@@ -173,7 +173,7 @@ def twitter_post(img):
 
 
 def lambda_handler(event, context):
-    color_maps = COLOR_MAPS[int(random.random() * 10)]
+    color_maps = COLOR_MAPS[int(random.random() * len(COLOR_MAPS))]
     logger.info(f'color_maps: {color_maps}')
     img = create_word_cloud(color_maps)
     img_to_s3(img)
