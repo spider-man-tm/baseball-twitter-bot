@@ -33,7 +33,7 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
 COLOR_MAPS = [
-    'mask', 'gnuplot', 'seismic', 'gist_heat',
+    'mask', 'seismic', 'gist_heat',
 ]
 
 
