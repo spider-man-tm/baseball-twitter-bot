@@ -1,9 +1,12 @@
 <mxfile>
     <diagram id="3-KSoQa4nNObV2YMimPg" name="Page-1">
-        <mxGraphModel dx="989" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1003" dy="670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
+                <mxCell id="38" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="81" width="140" height="169" as="geometry"/>
+                </mxCell>
                 <mxCell id="2" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.webicons.twitter;fillColor=#49EAF7;gradientColor=#137BD0" parent="1" vertex="1">
                     <mxGeometry x="710" y="270" width="80" height="80" as="geometry"/>
                 </mxCell>
@@ -127,6 +130,12 @@
                         <mxPoint x="390" y="290" as="sourcePoint"/>
                         <mxPoint x="440" y="240" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="91" width="62.19" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="各Lambda関数で&lt;br&gt;使用するレイヤーは&lt;br&gt;Dockerコンテナ内で&lt;br&gt;シュミレートされた&lt;br&gt;AmazonLinux2環境を&lt;br&gt;使用して作成" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="150" width="130" height="90" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
